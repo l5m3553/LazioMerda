@@ -18,8 +18,12 @@ exports.handler = async (event) => {
     };
   } catch (err) {
     return {
-      statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
+      statusCode: 200,
+      headers: { 
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+      },
+      body: JSON.stringify({ content: 'DEBUG ERROR: ' + err.message }),
     };
   }
 };
@@ -50,9 +54,10 @@ function makeRequest(prompt) {
       res.on('end', () => {
         try {
           const parsed = JSON.parse(data);
-          if (parsed.error) reject(new Error(parsed.error.message));
-          else resolve(parsed.content[0].text);
-        } catch(e) { reject(e); }
+          if (parsed.error) reject(new Error(JSON.stringify(parsed.error)));
+          else if (parsed.content && parsed.content[0]) resolve(parsed.content[0].text);
+          else reject(new Error('Unexpected response: ' + data.substring(0, 200)));
+        } catch(e) { reject(new Error('Parse error: ' + data.substring(0, 200))); }
       });
     });
 
