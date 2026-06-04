@@ -1,0 +1,7 @@
+toml[build]
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/insulto"
+  to = "/.netlify/functions/insulto"
+  status = 200
