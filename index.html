@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LazioMerda.com — Roma È Antilaziale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=IM+Fell+English:ital@0;1&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rosso: #8B1A1A;
+  --rosso-scuro: #5a0f0f;
+  --oro: #FFD700;
+  --oro-tenue: #C8A415;
+  --nero: #0d0500;
+  --crema: #FFE8B0;
+  --sfondo: #110600;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'IM Fell English', Georgia, serif;
+  background: var(--sfondo);
+  color: var(--crema);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(13,5,0,0.97);
+  border-bottom: 2px solid var(--rosso);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  color: var(--oro);
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--rosso); }
+
+.nav-links {
+  display: flex;
+  gap: 0;
+  list-style: none;
+}
+
+.nav-links a {
+  display: block;
+  padding: .4rem .9rem;
+  font-family: 'Playfair Display', serif;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--crema);
+  text-decoration: none;
+  opacity: .7;
+  transition: opacity .2s, color .2s;
+}
+
+.nav-links a:hover { opacity: 1; color: var(--oro); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  background: var(--sfondo);
+  border-bottom: 3px solid var(--rosso);
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(139,26,26,.04) 30px, rgba(139,26,26,.04) 60px);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: .7rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--oro-tenue);
+  margin-bottom: 1.2rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 12vw, 9rem);
+  color: var(--oro);
+  line-height: .9;
+  letter-spacing: 2px;
+}
+
+.hero-title .rosso { color: var(--rosso); }
+
+.hero-sub {
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  color: var(--crema);
+  opacity: .75;
+  margin-top: 1.2rem;
+  max-width: 540px;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 2px;
+  background: var(--rosso);
+  margin: 1.5rem auto;
+}
+
+/* Countdown nel hero */
+.countdown-wrap {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cd-block {
+  text-align: center;
+  min-width: 72px;
+}
+
+.cd-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--oro);
+  line-height: 1;
+  display: block;
+}
+
+.cd-label {
+  font-size: .6rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rosso);
+  font-family: 'Playfair Display', serif;
+}
+
+.cd-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem;
+  color: var(--rosso);
+  opacity: .5;
+  line-height: 1;
+  padding-top: .1rem;
+}
+
+.hero-derby-label {
+  font-size: .75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--oro-tenue);
+  margin-top: .5rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.classifica-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: var(--rosso-scuro);
+  border: 1px solid var(--rosso);
+  border-radius: 999px;
+  padding: .35rem 1.2rem;
+  font-size: .8rem;
+  margin-top: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.classifica-pill .up { color: var(--oro); font-weight: 700; }
+.classifica-pill .down { color: #ff6666; }
+.classifica-pill .sep { color: var(--rosso); opacity: .6; }
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btn-primary {
+  padding: .75rem 2rem;
+  background: var(--rosso);
+  color: var(--oro);
+  border: 2px solid var(--oro);
+  border-radius: 3px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background .2s;
+  display: inline-block;
+}
+
+.btn-primary:hover { background: #a82020; }
+
+.btn-outline {
+  padding: .75rem 2rem;
+  background: transparent;
+  color: var(--crema);
+  border: 1px solid rgba(255,216,0,.3);
+  border-radius: 3px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color .2s, color .2s;
+  display: inline-block;
+}
+
+.btn-outline:hover { border-color: var(--oro); color: var(--oro); }
+
+/* ─── SEZIONI ─── */
+.section {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-full {
+  padding: 5rem 2rem;
+  border-top: 1px solid rgba(139,26,26,.3);
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: .65rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--rosso);
+  font-family: 'Playfair Display', serif;
+  margin-bottom: .5rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--oro);
+  margin-bottom: 1rem;
+}
+
+.section-sub {
+  font-style: italic;
+  color: rgba(255,232,176,.6);
+  font-size: 1rem;
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+/* ─── EMAIL ─── */
+#email { background: var(--rosso-scuro); border-top: 3px solid var(--oro); border-bottom: 3px solid var(--oro); }
+
+.email-card {
+  background: var(--sfondo);
+  border: 1px solid var(--rosso);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.email-preview {
+  background: #1a0800;
+  border: 1px solid rgba(255,216,0,.2);
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  font-family: monospace;
+  font-size: 1.1rem;
+}
+
+.email-preview .at { color: var(--rosso); font-weight: 700; }
+.email-preview .domain { color: var(--oro); }
+.email-preview-hint { font-size: .75rem; color: rgba(255,232,176,.4); margin-top: .3rem; font-family: 'IM Fell English', serif; font-style: italic; }
+
+.email-input-row {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.2rem;
+}
+
+.email-input-row input {
+  flex: 1;
+  background: #2a0f00;
+  border: 1px solid var(--rosso);
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  color: var(--crema);
+  font-family: 'IM Fell English', serif;
+  font-size: 1rem;
+  padding: .6rem 1rem;
+  outline: none;
+}
+
+.email-input-row input:focus { border-color: var(--oro); }
+
+.email-suffix {
+  background: var(--rosso);
+  border: 1px solid var(--rosso);
+  border-radius: 0 4px 4px 0;
+  padding: .6rem 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: .9rem;
+  letter-spacing: 1px;
+  color: var(--oro);
+  white-space: nowrap;
+}
+
+.price-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.price-card {
+  border: 1px solid rgba(139,26,26,.6);
+  border-radius: 6px;
+  padding: 1rem;
+  text-align: center;
+  background: #1a0800;
+}
+
+.price-card.featured { border-color: var(--oro); }
+.price-card .tier { font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--rosso); font-family: 'Playfair Display', serif; }
+.price-card.featured .tier { color: var(--oro); }
+.price-card .amount { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--crema); line-height: 1.1; }
+.price-card .period { font-size: .7rem; color: rgba(255,232,176,.4); font-style: italic; }
+.price-card .features { font-size: .75rem; color: rgba(255,232,176,.6); margin-top: .5rem; line-height: 1.6; }
+
+/* ─── SHOP ─── */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--rosso);
+  margin-bottom: 2rem;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: .6rem 1.4rem;
+  font-family: 'Playfair Display', serif;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: rgba(255,232,176,.5);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  white-space: nowrap;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  transition: all .2s;
+}
+
+.tab:hover { color: var(--crema); }
+.tab.active { color: var(--oro); border-bottom-color: var(--oro); }
+
+.tshirt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.tshirt-card {
+  background: #180800;
+  border: 1px solid rgba(139,26,26,.5);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: border-color .2s, transform .2s;
+  cursor: pointer;
+}
+
+.tshirt-card:hover { border-color: var(--oro); transform: translateY(-3px); }
+
+.tshirt-visual {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.tshirt-svg {
+  width: 120px;
+  height: 120px;
+  position: relative;
+}
+
+.shirt-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80px;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.tshirt-info { padding: 1rem; }
+.tshirt-name { font-family: 'Playfair Display', serif; font-size: .9rem; font-weight: 700; color: var(--oro); margin-bottom: .2rem; }
+.tshirt-frase { font-style: italic; font-size: .78rem; color: rgba(255,232,176,.6); margin-bottom: .8rem; line-height: 1.4; }
+.tshirt-bottom { display: flex; align-items: center; justify-content: space-between; }
+.tshirt-price { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; color: var(--crema); }
+.tshirt-btn { padding: .3rem .9rem; background: var(--rosso); color: var(--oro); border: none; border-radius: 3px; font-family: 'Bebas Neue', sans-serif; font-size: .8rem; letter-spacing: 1px; cursor: pointer; transition: background .2s; }
+.tshirt-btn:hover { background: #a82020; }
+
+/* ─── GENERATORE ─── */
+#generatore { background: #0d0300; }
+
+.gen-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.gen-card {
+  background: #1a0800;
+  border: 1px solid var(--rosso);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gen-head {
+  background: var(--rosso);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--oro);
+}
+
+.gen-head-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--oro);
+}
+
+.gen-head-sub {
+  font-size: .7rem;
+  color: rgba(255,216,0,.6);
+  font-style: italic;
+}
+
+.gen-body { padding: 1.5rem; }
+
+.glbl { display: block; font-size: .65rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,216,0,.6); margin-bottom: .35rem; font-family: 'Playfair Display', serif; }
+.grow { margin-bottom: 1rem; }
+
+.grow input, .grow textarea {
+  width: 100%;
+  background: #0d0300;
+  border: 1px solid rgba(139,26,26,.7);
+  color: var(--crema);
+  font-family: 'IM Fell English', serif;
+  font-size: .95rem;
+  border-radius: 4px;
+  padding: .5rem .75rem;
+  outline: none;
+  transition: border-color .2s;
+}
+
+.grow input:focus, .grow textarea:focus { border-color: var(--oro); }
+.grow textarea { min-height: 60px; resize: vertical; }
+
+.mode-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 1.25rem; }
+
+.mcard {
+  border: 1px solid rgba(139,26,26,.6);
+  border-radius: 4px;
+  background: #0d0300;
+  padding: .6rem .4rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all .15s;
+}
+
+.mcard:hover { border-color: var(--oro); }
+.mcard.on { border-color: var(--oro); background: var(--rosso); }
+.mcard .mn { display: block; font-family: 'Playfair Display', serif; font-size: .82rem; font-weight: 700; color: var(--oro); margin-bottom: 2px; }
+.mcard .ms { display: block; font-size: .68rem; color: rgba(255,216,0,.55); font-style: italic; }
+.mcard.on .ms { color: rgba(255,216,0,.8); }
+
+.gbtn {
+  width: 100%;
+  padding: .85rem;
+  background: var(--rosso);
+  color: var(--oro);
+  border: 2px solid var(--oro);
+  border-radius: 4px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: background .2s;
+}
+
+.gbtn:hover { background: #a82020; }
+.gbtn:disabled { opacity: .5; cursor: not-allowed; }
+
+.result-box {
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,26,26,.6);
+  border-radius: 6px;
+  overflow: hidden;
+  display: none;
+}
+
+.result-box.vis { display: block; }
+
+.result-head {
+  background: var(--oro);
+  padding: .4rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.result-head-label {
+  font-family: 'Playfair Display', serif;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #4a0f0f;
+}
+
+.result-badge {
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--rosso);
+  color: var(--oro);
+  padding: 2px 8px;
+  border-radius: 2px;
+  font-family: 'Playfair Display', serif;
+}
+
+.result-body { padding: 1.25rem; background: #080200; min-height: 80px; }
+.result-text { font-size: 1.05rem; line-height: 1.85; color: var(--crema); font-style: italic; white-space: pre-wrap; }
+
+.result-gloss {
+  border-top: 1px solid rgba(139,26,26,.3);
+  padding-top: .7rem;
+  margin-top: .8rem;
+  font-style: normal;
+  font-size: .78rem;
+  color: rgba(255,216,0,.55);
+  line-height: 1.6;
+}
+
+.result-gloss strong { color: var(--oro); }
+
+.result-footer {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid rgba(139,26,26,.4);
+}
+
+.rfbtn {
+  padding: .55rem;
+  background: #0d0300;
+  border: none;
+  border-right: 1px solid rgba(139,26,26,.3);
+  color: rgba(255,216,0,.55);
+  font-family: 'IM Fell English', serif;
+  font-size: .8rem;
+  cursor: pointer;
+  transition: all .15s;
+}
+
+.rfbtn:last-child { border-right: none; }
+.rfbtn:hover { background: #1a0800; color: var(--oro); }
+
+.api-notice {
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  background: rgba(139,26,26,.15);
+  border: 1px solid rgba(139,26,26,.4);
+  border-radius: 4px;
+  font-size: .78rem;
+  color: rgba(255,232,176,.6);
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--nero);
+  border-top: 3px solid var(--rosso);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  color: var(--oro);
+  letter-spacing: 3px;
+  margin-bottom: .5rem;
+}
+
+.footer-logo span { color: var(--rosso); }
+
+.footer-sub {
+  font-style: italic;
+  font-size: .85rem;
+  color: rgba(255,232,176,.4);
+  margin-bottom: 1.5rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.footer-links a {
+  font-size: .75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,232,176,.5);
+  text-decoration: none;
+  font-family: 'Playfair Display', serif;
+  transition: color .2s;
+}
+
+.footer-links a:hover { color: var(--oro); }
+
+.footer-copy {
+  font-size: .65rem;
+  color: rgba(255,232,176,.2);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Playfair Display', serif;
+}
+
+.wolf { font-size: 2rem; display: block; margin-bottom: .5rem; }
+
+/* dots animation */
+.dots span { display: inline-block; animation: dp .9s infinite; color: var(--oro); }
+.dots span:nth-child(2) { animation-delay: .2s; }
+.dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes dp { 0%,80%,100%{opacity:.3} 40%{opacity:1} }
+
+::placeholder { color: rgba(255,216,0,.2); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Lazio<span>Merda</span>.com</a>
+  <ul class="nav-links">
+    <li><a href="#email">Email</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#generatore">Insulti</a></li>
+    <li><a href="#derby">Derby</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+
+  <p class="hero-eyebrow">Dal 1927 · Roma è Antilaziale · Noi di Roma, Voi di...ntorni</p>
+
+  <h1 class="hero-title">
+    Lazio<br><span class="rosso">Merda</span><br>.com
+  </h1>
+
+  <div class="hero-divider"></div>
+
+  <p class="hero-sub">L'unico sito che i laziali temono più del derby. Insulti in romanesco autentico, email @laziomerda.com, magliette leggendarie e il conto alla rovescia per la prossima umiliazione.</p>
+
+  <div class="classifica-pill">
+    <span class="up">Roma 3ª — 73pt</span>
+    <span class="sep">·</span>
+    <span class="down">Lazio 9ª — 54pt</span>
+    <span class="sep">·</span>
+    <span style="color:var(--crema);">distacco: <strong style="color:var(--oro);">19 punti</strong></span>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#email" class="btn-primary">Prendi la tua Email</a>
+    <a href="#generatore" class="btn-outline">Genera un Insulto</a>
+  </div>
+</section>
+
+<!-- DERBY COUNTDOWN -->
+<section id="derby" class="section-full" style="background:#0d0300; border-top:3px solid var(--oro); border-bottom:1px solid rgba(139,26,26,.3);">
+  <div class="section-inner" style="text-align:center;">
+    <p class="section-eyebrow" style="text-align:center;">Derby della Capitale</p>
+    <h2 class="section-title" style="text-align:center;">Prossima Umiliazione</h2>
+    <p style="font-style:italic; color:rgba(255,232,176,.5); font-size:.9rem; margin-bottom:2rem;" id="derby-date-label">Caricamento data derby...</p>
+
+    <div class="countdown-wrap" id="countdown">
+      <div class="cd-block">
+        <span class="cd-num" id="cd-gg">--</span>
+        <span class="cd-label">Giorni</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-hh">--</span>
+        <span class="cd-label">Ore</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-mm">--</span>
+        <span class="cd-label">Minuti</span>
+      </div>
+      <span class="cd-sep">:</span>
+      <div class="cd-block">
+        <span class="cd-num" id="cd-ss">--</span>
+        <span class="cd-label">Secondi</span>
+      </div>
+    </div>
+
+    <p class="hero-derby-label" style="margin-top:1.5rem;" id="derby-subtitle">Roma - Lazio · Stadio Olimpico</p>
+
+    <div style="margin-top:2rem; display:flex; gap:3rem; justify-content:center; flex-wrap:wrap;">
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:var(--oro); line-height:1;">Roma</div>
+        <div style="font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,216,0,.5); font-family:'Playfair Display',serif;">wins nei derby</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--crema);">73</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:rgba(139,26,26,.7); line-height:1;">Lazio</div>
+        <div style="font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,216,0,.5); font-family:'Playfair Display',serif;">wins nei derby</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--crema);">68</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:rgba(255,232,176,.3); line-height:1;">=</div>
+        <div style="font-size:.65rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,216,0,.5); font-family:'Playfair Display',serif;">pareggi</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:1.5rem; color:var(--crema);">56</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL -->
+<section id="email" class="section-full" style="background: var(--rosso-scuro); border-top:3px solid var(--oro); border-bottom:3px solid var(--oro);">
+  <div class="section-inner">
+    <p class="section-eyebrow">La tua identità romanista</p>
+    <h2 class="section-title">Prendi la tua Email</h2>
+    <p class="section-sub">
+      Manda email professionali, whatsapp, e dichiarazioni d'amore direttamente da <em>tu@laziomerda.com</em>. L'unica email che fa fuggire i laziali dalla casella di posta.
+    </p>
+
+    <div class="email-card">
+      <div class="email-preview">
+        <span id="email-preview-text" style="color:var(--crema);">il_tuo_nome</span><span class="at">@</span><span class="domain">laziomerda.com</span>
+        <div class="email-preview-hint">Così ti vedono quando mandi un'email al tuo cognato laziale</div>
+      </div>
+
+      <div class="email-input-row">
+        <input type="text" id="email-input" placeholder="il_tuo_nome" oninput="aggiornaPreview(this.value)" />
+        <div class="email-suffix">@laziomerda.com</div>
+      </div>
+
+      <div class="price-row">
+        <div class="price-card">
+          <div class="tier">Base</div>
+          <div class="amount">€3<span style="font-size:1rem;">/m</span></div>
+          <div class="period">al mese</div>
+          <div class="features">Email funzionante<br>Firma standard<br>Pianto laziale incluso</div>
+        </div>
+        <div class="price-card featured">
+          <div class="tier">Giallorosso</div>
+          <div class="amount">€7<span style="font-size:1rem;">/m</span></div>
+          <div class="period">al mese</div>
+          <div class="features">Email + firma animata<br>Classifica live Roma/Lazio<br>Modalità derby</div>
+        </div>
+        <div class="price-card">
+          <div class="tier">Ultras</div>
+          <div class="amount">€15<span style="font-size:1rem;">/m</span></div>
+          <div class="period">al mese</div>
+          <div class="features">Tutto + alias multipli<br>Auto-risposta in romanesco<br>Notifiche post-derby</div>
+        </div>
+      </div>
+
+      <button class="gbtn" onclick="acquistaEmail()">Daje — Voglio la mia Email</button>
+      <p style="text-align:center; margin-top:.75rem; font-size:.75rem; font-style:italic; color:rgba(255,232,176,.4);">
+        "La Roma non si discute, si ama. E si manda email." — Renato Rascel (quasi)
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="section-full">
+  <div class="section-inner">
+    <p class="section-eyebrow">Lo Shop Giallorosso</p>
+    <h2 class="section-title">Magliette Leggendarie</h2>
+    <p class="section-sub">Tre collezioni. Una filosofia: <em>essere romanisti non è una scelta, è una condizione dell'anima.</em></p>
+
+    <div class="tabs">
+      <button class="tab active" onclick="cambiaTab('amore', this)">Amore per la Roma</button>
+      <button class="tab" onclick="cambiaTab('lazio', this)">Lazio Merda</button>
+      <button class="tab" onclick="cambiaTab('storia', this)">Momenti Storici</button>
+    </div>
+
+    <!-- AMORE -->
+    <div class="tshirt-grid" id="tab-amore">
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:11px; color:#FFD700;">MAI UNA<br>GIOIA<br><span style="font-size:8px; color:rgba(255,216,0,.6);">ma la amo lo stesso</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Mai Una Gioia</div>
+          <div class="tshirt-frase">"La filosofia del vero romanista in tre parole"</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:10px; color:#FFD700;">SEGUO LA ROMA<br>E FINISCO<br>NEI GUAI<br><span style="font-size:7px; color:rgba(255,216,0,.6);">e ci torno lo stesso</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Nei Guai</div>
+          <div class="tshirt-frase">"Daje, ci rialziamo" — ogni domenica</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:9px; color:#FFD700;">E SE PERDI<br>SEI SEMPRE<br>MIA<br><span style="font-size:7px;">IL MIO UNICO AMOR</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Unico Amor</div>
+          <div class="tshirt-frase">"Incondizionato. Come deve essere."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:12px; color:#FFD700;">LOTTA<br>CORRI<br>SUDA<br><span style="font-size:7px;">ONORA LA MAGLIA</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Onora la Maglia</div>
+          <div class="tshirt-frase">"L'ordine sacro della Curva Sud"</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€24</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LAZIO -->
+    <div class="tshirt-grid" id="tab-lazio" style="display:none;">
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:14px; color:#FFD700; font-family:'Bebas Neue',sans-serif; letter-spacing:2px;">LAZIO<br>MERDA<br><span style="font-size:10px;">1927</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Lazio Merda</div>
+          <div class="tshirt-frase">"Il classico. Diretto. Onesto. Romano."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:8px; color:#FFD700;">NOI DI ROMA<br>VOI DI<br>...NTORNI<br><span style="font-size:7px; color:rgba(255,216,0,.6);">Alberto Sordi aveva ragione</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">De...ntorni</div>
+          <div class="tshirt-frase">"Chi è nato a Roma è romanista." — Sordi</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:9px; color:#FFD700;">FOGNA<br>DE STA<br>CITTÀ<br><span style="font-size:7px; color:rgba(255,216,0,.5);">— la Curva Sud</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Fogna</div>
+          <div class="tshirt-frase">"Poetico. Definitivo. Romanesco autentico."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:8px; color:#FFD700;">CHI TOCCA<br>LA ROMA<br>MUORE<br><span style="font-size:7px; color:rgba(255,216,0,.5);">— ammonimento gentile</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Chi Tocca</div>
+          <div class="tshirt-frase">"Un avvertimento. Educato. Per ora."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€22</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STORIA -->
+    <div class="tshirt-grid" id="tab-storia" style="display:none;">
+
+      <div class="tshirt-card" style="border-color:rgba(255,216,0,.4);">
+        <div class="tshirt-visual" style="background:#0d0300;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="2"/>
+            </svg>
+            <div class="shirt-text" style="color:#FFD700;">
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:28px; line-height:1; color:#FFD700;">6</div>
+              <div style="font-family:'Bebas Neue',sans-serif; font-size:14px; letter-spacing:2px;">UNICA!</div>
+            </div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">6 Unica</div>
+          <div class="tshirt-frase">"Totti nel derby 2001. La maglia sotto la maglia. Il gesto più iconico della storia."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€28</span>
+            <button class="tshirt-btn" style="background:#C8A415; color:#0d0300;">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:8px; color:#FFD700;">LA ROMA<br>NON SI DISCUTE<br>SI AMA<br><span style="font-size:7px; color:rgba(255,216,0,.5);">sempre · 1951</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Non Si Discute</div>
+          <div class="tshirt-frase">"Renato Rascel, 1951. La sera della retrocessione."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€25</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:8px; color:#FFD700;">25.05.2022<br>TIRANA<br>CONFERENCE<br><span style="font-size:8px; font-family:'Bebas Neue',sans-serif; letter-spacing:2px;">CAMPIONI</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Tirana 2022</div>
+          <div class="tshirt-frase">"La Roma si è il Feye...noi! La notte che ha fermato la città."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€25</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tshirt-card">
+        <div class="tshirt-visual" style="background:#1a0500;">
+          <div style="position:relative; width:110px; height:120px;">
+            <svg viewBox="0 0 110 120" width="110" height="120" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 15 L5 35 L20 40 L20 110 L90 110 L90 40 L105 35 L90 15 L75 25 C70 10 40 10 35 25 Z" fill="#8B1A1A" stroke="#FFD700" stroke-width="1.5"/>
+            </svg>
+            <div class="shirt-text" style="font-size:9px; color:#FFD700;">TODA<br>JOYA<br><span style="font-size:7px; color:rgba(255,216,0,.5);">Francesco Totti</span></div>
+          </div>
+        </div>
+        <div class="tshirt-info">
+          <div class="tshirt-name">Toda Joya</div>
+          <div class="tshirt-frase">"Tutto gioia. Come il capitano ci ha sempre insegnato."</div>
+          <div class="tshirt-bottom">
+            <span class="tshirt-price">€25</span>
+            <button class="tshirt-btn">Aggiungi</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GENERATORE -->
+<section id="generatore" class="section-full" style="background:#0d0300; border-top:1px solid rgba(139,26,26,.3);">
+  <div class="section-inner">
+    <p class="section-eyebrow">Nella grande tradizione di Sordi, Proietti e Verdone</p>
+    <h2 class="section-title">Generatore di Insulti Romaneschi</h2>
+    <p class="section-sub">Tre registri. Un'unica missione: far capire al laziale della tua vita quanto sia fortunato ad averti vicino.</p>
+
+    <div class="gen-wrap">
+      <div class="gen-card">
+        <div class="gen-head">
+          <div>
+            <div class="gen-head-title">Er Verdetto Giallorosso</div>
+            <div class="gen-head-sub">alimentato dall'intelligenza artificiale — e dalla Curva Sud</div>
+          </div>
+          <div style="font-family:'Bebas Neue',sans-serif; font-size:1.1rem; color:rgba(255,216,0,.5); letter-spacing:2px;">1927</div>
+        </div>
+
+        <div class="gen-body">
+          <div class="grow">
+            <label class="glbl">Nome del laziale condannato</label>
+            <input type="text" id="gen-nome" placeholder="Marco, Zia Franca, er cognato..." />
+          </div>
+
+          <div class="grow">
+            <label class="glbl">Il suo peccato laziale (opzionale)</label>
+            <textarea id="gen-peccato" placeholder="Es: piange ancora per il 2000, ha il tatuaggio di Immobile, tifa anche la Juve..."></textarea>
+          </div>
+
+          <div class="grow">
+            <label class="glbl">Scegli il registro</label>
+            <div class="mode-grid">
+              <div class="mcard on" data-mode="classico" onclick="selModo(this)">
+                <span class="mn">Il Marchese</span>
+                <span class="ms">stile Sordi — nobile e tagliente</span>
+              </div>
+              <div class="mcard" data-mode="nucleare" onclick="selModo(this)">
+                <span class="mn">Nucleare</span>
+                <span class="ms">stile Augù — devastante</span>
+              </div>
+              <div class="mcard" data-mode="affettuoso" onclick="selModo(this)">
+                <span class="mn">Sora Lella</span>
+                <span class="ms">miele avvelenato</span>
+              </div>
+            </div>
+          </div>
+
+          <button class="gbtn" id="gen-btn" onclick="generaInsulto()">Daje — Pronuncia Er Verdetto</button>
+
+          <div class="api-notice" id="api-notice" style="display:none;"></div>
+
+          <div class="result-box" id="gen-result">
+            <div class="result-head">
+              <span class="result-head-label">Er Verdetto</span>
+              <span class="result-badge" id="gen-badge">Il Marchese</span>
+            </div>
+            <div class="result-body">
+              <div class="result-text" id="gen-text"></div>
+              <div class="result-gloss" id="gen-gloss" style="display:none;"></div>
+            </div>
+            <div class="result-footer">
+              <button class="rfbtn" onclick="copiaInsulto()">Copia</button>
+              <button class="rfbtn" onclick="mandaWA()">Manda su WhatsApp</button>
+              <button class="rfbtn" onclick="generaInsulto()">Altro insulto</button>
+            </div>
+          </div>
+
+          <p style="text-align:center; margin-top:1rem; font-size:.72rem; font-style:italic; color:rgba(255,232,176,.25);">
+            Il generatore richiede un backend configurato su laziomerda.com — vedi istruzioni di deploy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="wolf">🐺</span>
+  <div class="footer-logo">Lazio<span>Merda</span>.com</div>
+  <div class="footer-sub">"La Roma non si discute, si ama. Sempre." — Renato Rascel, 1951</div>
+  <div class="footer-links">
+    <a href="#email">Email</a>
+    <a href="#shop">Shop</a>
+    <a href="#generatore">Insulti</a>
+    <a href="#derby">Derby</a>
+  </div>
+  <div class="footer-copy">Roma 3ª · Lazio 9ª · Distacco 19 punti · 1927 · Gloria Aeterna</div>
+</footer>
+
+<script>
+/* ── COUNTDOWN ── */
+function calcolaCountdown() {
+  const derbies = [
+    new Date('2025-11-09T18:00:00'),
+    new Date('2026-03-15T20:45:00'),
+    new Date('2026-11-08T18:00:00'),
+  ];
+  const ora = new Date();
+  let prossimo = null;
+  for (const d of derbies) {
+    if (d > ora) { prossimo = d; break; }
+  }
+  if (!prossimo) {
+    document.getElementById('derby-date-label').textContent = 'Prossimo derby da annunciare';
+    return;
+  }
+  const opzioni = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+  document.getElementById('derby-date-label').textContent = prossimo.toLocaleDateString('it-IT', opzioni);
+
+  function tick() {
+    const diff = prossimo - new Date();
+    if (diff <= 0) {
+      document.getElementById('derby-subtitle').textContent = 'Il derby è OGGI — Daje Roma!';
+      return;
+    }
+    const gg = Math.floor(diff / 86400000);
+    const hh = Math.floor((diff % 86400000) / 3600000);
+    const mm = Math.floor((diff % 3600000) / 60000);
+    const ss = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cd-gg').textContent = String(gg).padStart(2,'0');
+    document.getElementById('cd-hh').textContent = String(hh).padStart(2,'0');
+    document.getElementById('cd-mm').textContent = String(mm).padStart(2,'0');
+    document.getElementById('cd-ss').textContent = String(ss).padStart(2,'0');
+  }
+  tick();
+  setInterval(tick, 1000);
+}
+calcolaCountdown();
+
+/* ── EMAIL PREVIEW ── */
+function aggiornaPreview(val) {
+  const el = document.getElementById('email-preview-text');
+  el.textContent = val || 'il_tuo_nome';
+}
+
+function acquistaEmail() {
+  alert('Questa funzione sarà disponibile al lancio di laziomerda.com — registra il tuo interesse!');
+}
+
+/* ── TABS SHOP ── */
+function cambiaTab(tab, el) {
+  document.querySelectorAll('.tshirt-grid').forEach(g => g.style.display = 'none');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).style.display = 'grid';
+  el.classList.add('active');
+}
+
+/* ── GENERATORE ── */
+let modoAttuale = 'classico';
+
+function selModo(el) {
+  document.querySelectorAll('.mcard').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+  modoAttuale = el.dataset.mode;
+}
+
+async function generaInsulto() {
+  const nome = document.getElementById('gen-nome').value.trim() || 'questo laziale';
+  const peccato = document.getElementById('gen-peccato').value.trim();
+  const btn = document.getElementById('gen-btn');
+  const risultato = document.getElementById('gen-result');
+  const testoEl = document.getElementById('gen-text');
+  const glossEl = document.getElementById('gen-gloss');
+  const badge = document.getElementById('gen-badge');
+  const notice = document.getElementById('api-notice');
+
+  notice.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Consultando er Marchese...';
+  risultato.classList.add('vis');
+  testoEl.innerHTML = '<span class="dots"><span>.</span><span>.</span><span>.</span></span>';
+  glossEl.style.display = 'none';
+
+  const labels = { classico: 'Il Marchese', nucleare: 'Nucleare', affettuoso: 'Sora Lella' };
+  badge.textContent = labels[modoAttuale];
+
+  const stili = {
+    classico: `Scrivi come Alberto Sordi nel Marchese del Grillo — nobile, teatrale, mai urlare. Il vero insulto romano non urla, taglia. Usa romanesco autentico: "Aò", "daje", "ammazza", "mortacci", "me cojoni", "a nfame", costruzioni con "de" e "er". Struttura da sentenza regale. Cita: Roma 3ª, Lazio 9ª, 19 punti di distacco. I laziali "de fori le mura". Il 6 Unica di Totti.`,
+    nucleare: `Scrivi come Augusto di Borotalco (Mario Brega) — feroce, romano di borgata. Usa insulti fisici poetici romani surreali: "te rivorto come 'n carzino", "te gonfio come 'na zampogna", "te faccio du' occhi neri che er WWF te protegge", "possi campà quanto 'na scoreggia". Condanna generazionale: "l'anima de li meglio mortacci tua e de chi nun te lo dice". Chiudi con "a nfame".`,
+    affettuoso: `Scrivi come Sora Lella — miele avvelenato. Inizia con calore romano autentico ("bella!", "a coso", "core mio", "zi"). Costruisci come Sordi: "Chi è nato a Roma è romanista. I laziali so' quelli de fori le mura, che ce porteno l'ove fresche e le ricotte..." Suona come un complimento ma è una condanna. Chiudi con qualcosa che sembra incoraggiamento ma è sentenza.`
+  };
+
+  const peccatoStr = peccato ? `Peccato specifico: "${peccato}".` : '';
+
+  const prompt = `Sei la voce della grande tradizione comica romana — Sordi, Proietti, Fabrizi, Verdone. Romanista doc. Genera un insulto in romanesco autentico per un tifoso della Lazio di nome "${nome}". ${peccatoStr}
+
+STILE: ${stili[modoAttuale]}
+
+Detti autentici disponibili: "mai una gioia", "aridaje", "mortacci tua", "a nfame", "me cojoni", "noi di Roma voi di ntorni", "fogna de sta città", "poco a gnente je parente", "te possino cecatte", "nun me te filo de pezza", "stai fori coll'accuso".
+
+Rispondi SOLO così (niente markdown):
+INSULTO: [3-5 frasi in romanesco poetico autentico]
+GLOSSARIO: [2-3 termini romaneschi spiegati brevemente]`;
+
+  try {
+    const res = await fetch('/api/insulto', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+
+    if (!res.ok) throw new Error('Server error ' + res.status);
+
+    const data = await res.json();
+    const testo = data.content || data.text || '';
+
+    if (!testo) throw new Error('Risposta vuota');
+
+    const parti = testo.split(/GLOSSARIO:/i);
+    const insulto = parti[0].replace(/^INSULTO:\s*/i, '').trim();
+    const gloss = parti[1] ? parti[1].trim() : '';
+
+    testoEl.textContent = insulto;
+
+    if (gloss) {
+      glossEl.innerHTML = '<strong>Glossario romanesco:</strong> ' + gloss;
+      glossEl.style.display = 'block';
+    }
+
+  } catch (err) {
+    testoEl.textContent = '';
+    notice.style.display = 'block';
+    notice.innerHTML = `
+      <strong style="color:var(--oro);">Il generatore richiede il backend configurato.</strong><br>
+      Chiama <code style="color:var(--oro); font-size:.85em;">/api/insulto</code> con la tua chiave Anthropic su Netlify/Vercel.<br>
+      <span style="font-size:.85em; opacity:.7;">Errore: ${err.message}</span>
+    `;
+    risultato.classList.remove('vis');
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Daje — Pronuncia Er Verdetto';
+}
+
+function copiaInsulto() {
+  const t = document.getElementById('gen-text').textContent + '\n\n— laziomerda.com';
+  navigator.clipboard.writeText(t).then(() => {
+    const b = event.target;
+    b.textContent = 'Copiato!';
+    setTimeout(() => b.textContent = 'Copia', 2000);
+  });
+}
+
+function mandaWA() {
+  const t = encodeURIComponent(document.getElementById('gen-text').textContent + '\n\n— laziomerda.com');
+  window.open('https://wa.me/?text=' + t);
+}
+</script>
+</body>
+</html>
