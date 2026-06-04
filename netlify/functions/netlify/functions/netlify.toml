@@ -5,3 +5,13 @@
   from = "/api/insulto"
   to = "/.netlify/functions/insulto"
   status = 200
+
+[[redirects]]
+  from = "/api/classifica"
+  to = "/.netlify/functions/classifica"
+  status = 200
+
+[[redirects]]
+  from = "/api/reddit"
+  to = "/.netlify/functions/reddit"
+  status = 200
